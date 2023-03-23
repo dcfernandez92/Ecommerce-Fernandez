@@ -1,34 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
 
 function NavBar() {
 
     return (
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Maderas Don Juan</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" >
-                    <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light ">
+            <div className="container-fluid">
+                <Link to='/' className="navbar-brand">Libros</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" >
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Inicio</a>
+                <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+                    <ul className="navbar-nav">                        
+                        <li className="nav-item">
+                            <Link to='/category/Fantasy' className="nav-link">Fantasía</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Productos</a>
+                        <li className="nav-item">
+                            <Link to='/category/scienceFiction' className="nav-link">Ciencia Ficción</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" >Contacto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><CartWidget/></a>
+                        <li className="nav-item">
+                            <Link to='/category/thriller' className="nav-link">Thriller</Link>
                         </li>
                     </ul>
+                </div>
+                <div>
+                    <a className="nav-link" href="/"><CartWidget /></a>
                 </div>
             </div>
         </nav>

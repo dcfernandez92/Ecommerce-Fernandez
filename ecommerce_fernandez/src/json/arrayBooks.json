@@ -1,0 +1,110 @@
+[
+    {
+        "id": 1,
+        "title": "El Nombre del Viento",
+        "genre": "Fantasy",
+        "author": "Patrick Rothfuss",
+        "description": "Primer libro de la saga Crónica del asesino de reyes",
+        "img": "https://patrickrothfuss.com/images/page/cover_277.jpg",
+        "stock": 2
+    },
+    {
+        "id": 2,
+        "title": "El Hobbit",
+        "genre": "Fantasy",
+        "author": "John Ronald Reuel Tolkien",
+        "description": "Libro que narra la historia de Bilbo Baggins",
+        "img": "https://planetadelibrosar1.cdnstatics.com/usuaris/libros/fotos/291/m_libros/portada_el-hobbit_j-r-r-tolkien_202002051453.jpg",
+        "stock": 4
+    },
+    {
+        "id": 3,
+        "title": "El camino de los Reyes",
+        "genre": "Fantasy",
+        "author": "Brandon Sanderson",
+        "description": "Primer libro de la saga del archivo de las tormentas",
+        "img": "https://www.brandonsanderson.com/wp-content/uploads/2019/11/Way-of-Kings.jpg",
+        "stock": 10
+    },
+    {
+        "id": 4,
+        "title": "Juego de Tronos",
+        "genre": "Fantasy",
+        "author": "George Raymond Richard Martin",
+        "description": "Primer libro de la saga de canción de hielo y fuego",
+        "img": "https://www.georgerrmartin.com/wp-content/uploads/2013/03/GOTMTI2.jpg",
+        "stock": 1
+    },
+    {
+        "id": 5,
+        "title": "Proyecto Hail Mary",
+        "genre": "scienceFiction",
+        "author": "Andy Weir",
+        "description": "Libro sobre una misión espacial arriba de la nave Hail Mary",
+        "img": "http://images.randomhouse.com/cover/d/9780593135204",
+        "stock": 2
+    },
+    {
+        "id": 6,
+        "title": "Fundación",
+        "genre": "scienceFiction",
+        "author": "Isaac Asimov",
+        "description": "Primer libro de la trilogía de la fundación",
+        "img": "https://cdn.agapea.com/Debolsillo/Fundacion-i6n121991.jpg",
+        "stock": 0
+    },
+    {
+        "id": 7,
+        "title": "Flores para Algernon",
+        "genre": "scienceFiction",
+        "author": "Daniel Keyes",
+        "description": "Libro sobre la vida del personaje Charlie Gordon",
+        "img": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8579/9781857989380.jpg",
+        "stock": 5
+    },
+    {
+        "id": 8,
+        "title": "Dune",
+        "genre": "scienceFiction",
+        "author": " Frank Herbert",
+        "description": "Primer libro de la saga Dune",
+        "img": "https://dunenovels.com/wp-content/uploads/2020/11/Dune-Cover-1.jpg",
+        "stock": 7
+    },
+    {
+        "id": 9,
+        "title": "La Sombra del Viento",
+        "genre": "thriller",
+        "author": "Carlos Ruiz Zafón",
+        "description": "Primer libro de la saga del cementerio de los libros olvidados",
+        "img": "https://planetadelibroscom.cdnstatics2.com/usuaris/libros/fotos/39/m_libros/portada_la-sombra-del-viento_carlos-ruiz-zafon_201609051632.jpg",
+        "stock": 1
+    },
+    {
+        "id": 10,
+        "title": "Misery",
+        "genre": "thriller",
+        "author": "Stephen King",
+        "description": "La historia sigue los sucesos que le ocurren a Paul Sheldon",
+        "img": "https://stephenking.com/images/books/misery/hardcover_prop_embed.jpg",
+        "stock": 2
+    },
+    {
+        "id": 11,
+        "title": "El Psicoanalista",
+        "genre": "thriller",
+        "author": "John Katzenbach",
+        "description": "La historia pone a prueba la capacidad del protagonista para evitar su suicidio frente a la presión de un desconocido",
+        "img": "https://enciclopedias.com/wp-content/uploads/2018/02/el-psicoanalista-4-684x1024.jpg",
+        "stock": 3
+    },
+    {
+        "id": 12,
+        "title": "El Código Da Vinci",
+        "genre": "thriller",
+        "author": "Dan Brown",
+        "description": "El libro narra los intentos de Robert Langdon para resolver el misterioso asesinato de Jacques Saunière",
+        "img": "https://danbrown.com/wp-content/themes/danbrown/images/db/books.02.jpg",
+        "stock": 4
+    }
+]
