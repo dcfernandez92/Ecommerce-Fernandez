@@ -1,31 +1,25 @@
 import React from "react"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import arrayBooks from "../json/arrayBooks.json"
 import ItemDetail from "./ItemDetail"
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
 
 function ItemDetailContainer() {
-    
-    const [item, setItem] = useState([])
-    const {id} = useParams()
 
-    useEffect(() =>{
-        const promise = new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(id ? arrayBooks.filter(item => item.id  === parseInt(id)) : arrayBooks)
-            })
-        })
+    const [data, setData] = useState([])
+    const { id } = useParams()
 
-        promise.then((data) => {
-            setItem(data)
-        })
-    },[id])   
+    useEffect(() => {
+        const queryDb = getFirestore()
+        const queryDoc = doc(queryDb, 'items', id)
+        getDoc(queryDoc)
+            .then(res=>setData({id: res.id, ...res.data()}))
+    },[id])
 
-
-    return (        
+    return (
         <div className="container">
             <div className="row">
-                <ItemDetail item={item}/>
+                <ItemDetail item={data} />
             </div>
         </div>
     )
