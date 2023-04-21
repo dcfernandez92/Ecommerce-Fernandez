@@ -1,9 +1,9 @@
 import { useCartContext } from "../context/CartContext";
 
 function CartWidget() {
-    
-    const {totalProducts} = useCartContext()
-    
+
+    const { totalProducts } = useCartContext()
+
     return (
         <button className="btn btn-primary">
             <i className="fa-solid fa-cart-shopping"> </i>

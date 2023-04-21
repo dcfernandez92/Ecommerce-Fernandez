@@ -13,7 +13,7 @@ function NavBar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
-                    <ul className="navbar-nav">                        
+                    <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link to='/category/Fantasy' className="nav-link">Fantasía</Link>
                         </li>
@@ -26,7 +26,7 @@ function NavBar() {
                     </ul>
                 </div>
                 <div>
-                <Link to="/cart" className="nav-link"><CartWidget /></Link>
+                    <Link to="/cart" className="nav-link"><CartWidget /></Link>
                 </div>
             </div>
         </nav>
