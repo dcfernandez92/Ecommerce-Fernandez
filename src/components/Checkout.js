@@ -20,21 +20,19 @@ export const Checkout = () => {
 
     const updateProduct = async (id, info) => {
         const db = getFirestore()
-        const estado = await updateDoc(doc(db, "items", id), info)
-        return estado
+        await updateDoc(doc(db, "items", id), info)
     }
 
     const getPaymentOrder = async (id) => {
         const db = getFirestore()
         const paymentOrder = await getDoc(doc(db, "orders", id))
         const item = { ...paymentOrder.data(), id: paymentOrder.id }
-        console.log(item)
         return item
     }
 
     const createPaymentOrder = async (customer, totalPrice, date) => {
         const db = getFirestore()
-        const ordenCompra = await addDoc(collection(db, "orders"), {
+        const paymentOrder = await addDoc(collection(db, "orders"), {
             name: customer.name,
             email: customer.email,
             address: customer.address,
@@ -43,39 +41,41 @@ export const Checkout = () => {
             totalPrice: totalPrice
         })
 
-        return ordenCompra
+        return paymentOrder
     }
 
-    const consultarFormulario = (e) => {
-        e.preventDefault()
-        const formData = new FormData(datosFormulario.current)
-        const customer = Object.fromEntries(formData)
-        const aux = [...cart]
+    const verifyStock = async (cartProduct) => {
+        const dbProduct = await getProduct(cartProduct.id);
+        if (dbProduct.stock >= cartProduct.quantity) {
+            dbProduct.stock -= cartProduct.quantity;
+            await updateProduct(cartProduct.id, dbProduct);
+        } else {
+            throw new Error(`No hay suficiente stock para el libro: ${dbProduct.title}. Stock: ${dbProduct.stock} disponible/s`);
+        }
+    };
 
-        aux.forEach(cartProduct => {
-            getProduct(cartProduct.id).then(dbProduct => {
-                if (dbProduct.stock >= cartProduct.quantity) {
-                    dbProduct.stock -= cartProduct.quantity
-                    updateProduct(cartProduct.id, dbProduct)
+    const CreatePaymentAndCleanCart = async (customer, e) => {
+        const paymentOrder = await createPaymentOrder(customer, totalPrice(), new Date().toISOString());
+        const item = await getPaymentOrder(paymentOrder.id);
+        toast.success(`¡Muchas gracias por su compra, su orden es ${item.id}`);
+        clearCart();
+        e.target.reset();
+        navigate("/");
+    };
 
-                } else console.log("No hay stock para el producto seleccionado")
-            })
-        })
+    const submitForm = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(datosFormulario.current);
+        const customer = Object.fromEntries(formData);
+        const aux = [...cart];
 
-        createPaymentOrder(customer, totalPrice(), new Date().toISOString()).then(paymentOrder => {
-            getPaymentOrder(paymentOrder.id).then(item => {
-                toast.success(`¡Muchas gracias por su compra, su orden es ${item.id}`)
-                clearCart()
-                e.target.reset()
-                navigate("/")
-            }).catch(error => {
-                toast.error("Su orden no fue generada con exito")
-                console.error(error)
-            })
-
-        })
-
-    }
+        try {
+            await Promise.all(aux.map(verifyStock));
+            await CreatePaymentAndCleanCart(customer, e);
+        } catch (error) {
+            toast.error(error.message);
+        }
+    };
 
     return (
         <>
@@ -110,7 +110,7 @@ export const Checkout = () => {
                         <p><span className="fw-bold">Total: ${totalPrice()}</span></p>
                     </div>
                     <div className="container" style={{ marginTop: "20px" }}>
-                        <form onSubmit={consultarFormulario} ref={datosFormulario}>
+                        <form onSubmit={submitForm} ref={datosFormulario}>
                             <div className="mb-3">
                                 <label htmlFor="name" className="form-label">Nombre y Apellido</label>
                                 <input type="text" className="form-control" name="name" />

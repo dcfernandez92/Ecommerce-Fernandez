@@ -20,7 +20,7 @@ const ItemDetail = ({ item }) => {
                         <p className="card-text">{item.author}</p>
                         <p className="card-text">{item.description}</p>
                         <p className="card-text">Precio: ${item.price} </p>
-                        <p className="card-text">Stock: {item.stock}</p>
+                        {item.stock !== 0 ? <p className="card-text">Stock: {item.stock}</p> : <p className="card-text fw-bold text-danger">AGOTADO</p>}
                         <ItemCount stock= {item.stock} onAdd={onAdd}/><br/>
                         <button className= "btn btn-success"><Link to="/cart" className="nav-link text-white">Finalizar compra</Link></button>
                     </div>

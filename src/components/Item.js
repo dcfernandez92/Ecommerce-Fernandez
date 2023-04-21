@@ -9,7 +9,7 @@ const Item = ({item}) => {
         <Link to={"/item/" + item.id} className="text-decoration-none">
             <div className="container">
                 <div className="card">
-                    <img src={item.img} className="card-img-top" alt={item.title} />
+                    <img src={item.img} className="card-img-top img-fluid" alt={item.title} />
                     <div className="card-body text-center">
                             <p className="card-text">{item.title}</p>
                             <p className="card-text">{item.author}</p>
