@@ -8,12 +8,12 @@ function NavBar() {
 
         <nav className="navbar navbar-expand-lg navbar-light bg-light ">
             <div className="container-fluid">
-                <Link to='/' className="navbar-brand">Libros</Link>
+                <Link to='/' className="navbar-brand">El Ateneo</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" >
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
-                    <ul className="navbar-nav">                        
+                    <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link to='/category/Fantasy' className="nav-link">Fantasía</Link>
                         </li>
@@ -26,7 +26,7 @@ function NavBar() {
                     </ul>
                 </div>
                 <div>
-                    <a className="nav-link" href="/"><CartWidget /></a>
+                    <Link to="/cart" className="nav-link"><CartWidget /></Link>
                 </div>
             </div>
         </nav>

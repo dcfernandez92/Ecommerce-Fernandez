@@ -1,31 +1,44 @@
 import React from "react"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import arrayBooks from "../json/arrayBooks.json"
 import ItemDetail from "./ItemDetail"
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
+import Error from "./Error"
 
 function ItemDetailContainer() {
-    
-    const [item, setItem] = useState([])
-    const {id} = useParams()
 
-    useEffect(() =>{
-        const promise = new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(id ? arrayBooks.filter(item => item.id  === parseInt(id)) : arrayBooks)
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
+    const { id } = useParams()
+
+    useEffect(() => {
+        const queryDb = getFirestore()
+        const queryDoc = doc(queryDb, 'items', id)
+        getDoc(queryDoc)
+            .then(res => {
+                setData({ id: res.id, ...res.data() })
+                setLoading(false)
             })
-        })
+    }, [id])
 
-        promise.then((data) => {
-            setItem(data)
-        })
-    },[id])   
+    if (loading) {
+        return (
+            <div className="d-flex justify-content-center my-5">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
 
+    if (!data.title) {
+        return <Error />
+    }
 
-    return (        
+    return (
         <div className="container">
             <div className="row">
-                <ItemDetail item={item}/>
+                <ItemDetail item={data} />
             </div>
         </div>
     )
