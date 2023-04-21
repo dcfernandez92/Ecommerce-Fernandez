@@ -9,35 +9,6 @@ function ItemListContainer() {
     const [data, setData] = useState([])
     const {id} = useParams()
 
-    // useEffect(() =>{
-    //     const promise = new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             resolve(id ? arrayBooks.filter(item => item.genre  === id) : arrayBooks)
-    //         })
-    //     })
-
-    //     promise.then((data) => {
-    //         setItem(data)
-    //     })
-    // },[id])   
-
-    // useEffect(() =>{
-    //     const getItems = async ()=>{
-    //         try{
-    //             const querySnapshot = await getDocs(collection(db, 'items'))
-    //             const docs = []
-    //             querySnapshot.forEach((doc)=>{
-    //                 docs.push({...doc.data(),id:doc.id})
-    //             })
-    //             setItem(docs)
-
-    //         }catch(error){
-    //             console.log(error)
-    //         }
-    //     }
-    //     getItems()
-    // },[item])
-
     useEffect(() => {
         const queryDb = getFirestore()
         const queryCollection = collection(queryDb, 'items')
